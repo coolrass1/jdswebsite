@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Banner from "../components/Banner";
 
 import { FaPlay } from "react-icons/fa";
+import Modal from "../components/Modal";
 
 const Mission = () => {
   const [isModalopen, SetisModalopen] = useState(false);
@@ -10,7 +11,7 @@ const Mission = () => {
   const Handleclick = () => {
     SetisModalopen(false);
 
-    // Unsets Background Scrolling to use when SideDrawer/Modal is closed
+    /// Unsets Background Scrolling to use when SideDrawer/Modal is closed
     document.body.style.overflow = 'unset';
 }
   const showSidebar = () => { 
