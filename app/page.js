@@ -3,9 +3,11 @@ import Hero from './components/Hero'
 import Services from './components/Services'
 const imageURL='/../public/images/slider1.jpeg'
 import { motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion"
 
 export default function Home() {
   return( <>
+   <AnimatePresence mode="wait">
    <motion.div
       className="container text-center  bg-black"
       initial={{ opacity: 0 }}
@@ -15,6 +17,6 @@ export default function Home() {
     >
   <Hero/>
   <Services/>
-  </motion.div></>  )
+  </motion.div></AnimatePresence></>  )
 
 }

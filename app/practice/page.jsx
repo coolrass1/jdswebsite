@@ -3,8 +3,10 @@ import React from "react";
 import Banner from "../components/Banner";
 import { PracticeArea } from "../components/PracticeArea";
 import { motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion"
 const practice = () => {
   return (
+    <AnimatePresence mode="wait">
     <motion.div
     
     initial={{ opacity: 0 }}
@@ -34,7 +36,7 @@ const practice = () => {
       </div>
     
     </section>
-    </motion.div>
+    </motion.div></AnimatePresence>
   );
 };
 
