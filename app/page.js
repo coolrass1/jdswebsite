@@ -7,10 +7,10 @@ import { AnimatePresence } from "framer-motion";
 
 export default function Home() {
   return (
-    <div className="container md:max-w-screen-md md:mx-auto lg:max-w-screen-lg   xl:max-w-screen-xl 2xl:max-w-screen-xl">
+    <div className="w-screen ">
       <AnimatePresence mode="wait">
         <motion.div
-          className="container text-center  bg-black"
+          className=""
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}

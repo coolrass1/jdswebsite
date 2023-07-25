@@ -60,9 +60,9 @@ const Hero = () => {
   }, [arrowright]);
   // useCallback(()=>{ setSlidetime(muty)},[muty])
   return (
-    <div className="relative overflow-hidden container max-w-screen-xl px-auto">
+    <div className="relative overflow-hidden  w-screen">
       <div
-        className={`relative flex justify-start items-center  `}
+        className={`w-full relative flex justify-start items-center  `}
         style={{
           transform: `translateX(${iszero ? 0 : slidetime + "%"})`,
           transition: "all 2s  step-start ",

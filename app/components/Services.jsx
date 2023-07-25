@@ -20,6 +20,7 @@ const Services = () => {
   };
   return (
     <section className="bg-bgprimary">
+     <div className=" container md:max-w-screen-md md:mx-auto lg:max-w-screen-xl">
       <h1 className="text-3xl text-center md:pt-12 mb-3 text-secondary font-semibold ">
         ABOUT JDS SOLICITORS
       </h1>
@@ -62,6 +63,7 @@ const Services = () => {
             contact us{" "}
           </button>
         </div>
+      </div>
       </div>
     </section>
   );
