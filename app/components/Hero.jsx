@@ -60,7 +60,7 @@ const Hero = () => {
   }, [arrowright]);
   // useCallback(()=>{ setSlidetime(muty)},[muty])
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden container">
       <div
         className={`relative flex justify-start items-center  `}
         style={{

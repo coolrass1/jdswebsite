@@ -10,16 +10,16 @@ const SocialLogo = () => {
   return (
     <div className="flex gap-5">
           
-        <div className="flex justify-center items-center text-xl text-primary  border-2 rounded-md border-primary p-2 w-11 hover:bg-slate-600 hover:text-white hover:border-0">
+        <div className="flex justify-center items-center text-sm text-primary  p-2 w-11 hover:bg-slate-600 hover:text-white hover:border-0">
     <FaFacebookF />
   </div>
-  <div className="flex justify-center items-center text-xl text-primary  border-2 rounded-md border-primary p-2 w-11 hover:bg-slate-600 hover:text-white hover:border-0">
+  <div className="flex justify-center items-center text-sm text-primary   p-2 w-11 hover:bg-slate-600 hover:text-white hover:border-0">
     <FaTwitter />
   </div>
-  <div className="flex justify-center items-center text-xl text-primary  border-2 rounded-md border-primary p-2 w-11 hover:bg-slate-600 hover:text-white hover:border-0">
+  <div className="flex justify-center items-center text-sm text-primary   p-2 w-11 hover:bg-slate-600 hover:text-white hover:border-0">
     <FaInstagramSquare />
   </div>
-  <div className="flex justify-center items-center text-xl text-primary  border-2 rounded-md border-primary p-2 w-11 hover:bg-slate-600 hover:text-white hover:border-0">
+  <div className="flex justify-center items-center text-sm text-primary  p-2 w-11 hover:bg-slate-600 hover:text-white hover:border-0">
     <FaFacebookF />
   </div></div>
   )
