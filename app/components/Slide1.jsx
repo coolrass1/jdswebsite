@@ -9,8 +9,8 @@ const Slide1 = ({props,Handleclick,handleclickLeft}) => {
     <section
    
       className={`container   imageboxtest relative  max-w-screen-xl min-w-full 
-    h-80  flex   justify-center   md:bg-auto md:bg-center items-center  md:h-screen md:w-screen`}
-    style={{backgroundImage:`url(${props?.img}`, backgroundPosition:'center'}}
+    h-60  flex   justify-center   md:bg-auto md:bg-center items-center  md:h-screen md:w-screen`}
+    style={{backgroundImage:`url(${props?.img}`}}
    >
       <div className=" absolute flex flex-col gap-3  justify-center items-center w-full h-full md: bg-black/25 md:backdrop-brightness-75">
         <div className="absolute cursor-pointer left-11 flex justify-center items-center top-2/4 h-12 w-12 text-black hover:text-white text-2xl rounded-full bg-gray-100 hover:bg-primary">
