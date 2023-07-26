@@ -1,8 +1,52 @@
 "use client";
 import React, { Suspense } from "react";
 import Banner from "../components/Banner";
+import { useForm, SubmitHandler } from "react-hook-form"
+//import { sendMail } from '@/app/services/mailService'
+import { onSubmitFetch } from "../components/Utils";
 
 const CONTACT = () => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm()
+ 
+
+  const onSubmit = (data) => {getdata(data)}
+
+  const getdata= async (data)=>{
+     // Send the data to the server in JSON format.
+     const JSONdata = JSON.stringify(data)
+   
+ 
+     // API endpoint where we send form data.
+     const endpoint = '/api/mailer'
+  
+     // Form the request for sending data to the server.
+     const options = {
+       // The method is POST because we are sending data.
+       method: 'POST',
+       // Tell the server we're sending JSON.
+       headers: {
+         'Content-Type': 'application/json',
+       },
+       // Body of the request is the JSON data we created above.
+       body: JSONdata,
+     }
+  
+     // Send the form data to our forms API on Vercel and get a response.
+     const response = await fetch(endpoint, options)
+
+  
+     // Get the response data from server as JSON.
+     // If server returns the name submitted, that means the form works.
+     const result = await response.json()
+     alert(`Is this your full name: ${result.name}`)
+  }
+
+
   return (
     <section>
       <Banner />
@@ -12,12 +56,14 @@ const CONTACT = () => {
         <div className="container max-w-screen-xl md:mx-auto px-3 flex flex-col gap-7 md:flex-row justify-between items-center">
           <div className="flex1">
             <form
-              onSubmit={(e) => e.preventDefault()}
+              onSubmit={handleSubmit(onSubmit)}
               className="flex flex-col gap-7 px-1 py-28"
+              
             >
               <div>
                 <input
                   type="text"
+                  {...register("name")} 
                   //className="py-2  my-7 md:my-0 w-full md:w-80  border-2 border-black "
                   placeholder="Enter your name"
                   className="bg-slate-50 text-secondary shadow-sm
@@ -27,6 +73,7 @@ const CONTACT = () => {
                 />{" "}
                 <input
                   type="email"
+                  {...register("email")} 
                   className="bg-slate-50 text-secondary shadow-sm
                   py-2 px-10 border-2 border-gray-100 cursor-pointer
                    outline-none "
@@ -36,6 +83,7 @@ const CONTACT = () => {
               </div>
               <input
                 type="text"
+                {...register("subject")} 
                 className="bg-slate-50 text-secondary shadow-sm
                  py-2 px-10 border-2 border-gray-100 cursor-pointer
                   outline-none "
@@ -49,6 +97,7 @@ const CONTACT = () => {
                 id="msg"
                 name="user_message"
                 placeholder="Your message"
+                {...register("message")} 
               ></textarea>
               <button type="submit" className="py-2  border-2 border-primary px-2 mx-1 inline uppercase md:w-44 hover:bg-white hover:text-primary font-extrabold text-white bg-primary ">
                 send message
