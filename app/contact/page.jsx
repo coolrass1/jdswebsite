@@ -1,17 +1,21 @@
 "use client";
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
 import Banner from "../components/Banner";
 import { useForm, SubmitHandler } from "react-hook-form"
 //import { sendMail } from '@/app/services/mailService'
 import { onSubmitFetch } from "../components/Utils";
+import Thankyou from "../components/Thankyou";
 
 const CONTACT = () => {
   const {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm()
+  const[sentSucces, SetsentSucces]=useState(false)
+  const [btnloading,setbtnloading]=useState(false)
  
 
   const onSubmit = (data) => {getdata(data)}
@@ -19,6 +23,7 @@ const CONTACT = () => {
   const getdata= async (data)=>{
      // Send the data to the server in JSON format.
      const JSONdata = JSON.stringify(data)
+     setbtnloading(true);
    
  
      // API endpoint where we send form data.
@@ -43,19 +48,14 @@ const CONTACT = () => {
      // Get the response data from server as JSON.
      // If server returns the name submitted, that means the form works.
      const result = await response.json()
-     alert(`Is this your full name: ${result.name}`)
+     console.log(JSON.stringify(result))
+     //console.log("resul ist   .. "+result.isSent)
+     SetsentSucces(result.isSent)
+     setbtnloading(false);
+    reset();
+     
   }
-
-
-  return (
-    <section>
-      <Banner />
-      <Suspense
-        fallback={<p className="bg-black min-h-[2000px]">Loading feed...</p>}
-      >
-        <div className="container max-w-screen-xl md:mx-auto px-3 flex flex-col gap-7 md:flex-row justify-between items-center">
-          <div className="flex1">
-            <form
+const Form1=()=>{return(<form
               onSubmit={handleSubmit(onSubmit)}
               className="flex flex-col gap-7 px-1 py-28"
               
@@ -99,10 +99,20 @@ const CONTACT = () => {
                 placeholder="Your message"
                 {...register("message")} 
               ></textarea>
-              <button type="submit" className="py-2  border-2 border-primary px-2 mx-1 inline uppercase md:w-44 hover:bg-white hover:text-primary font-extrabold text-white bg-primary ">
+              <button type="submit" disabled={btnloading ? true : false} className="py-2  border-2 border-primary px-2 mx-1 inline uppercase md:w-44 hover:bg-white hover:text-primary font-extrabold text-white bg-primary disabled:bg-black">
                 send message
               </button>
-            </form>
+            </form>)}
+
+  return (
+    <section>
+      <Banner />
+      <Suspense
+        fallback={<p className="bg-black min-h-[2000px]">Loading feed...</p>}
+      >
+        <div className="container max-w-screen-xl md:mx-auto px-3 flex flex-col gap-7 md:flex-row justify-between items-center">
+          <div className="flex1">
+            {!sentSucces?<Form1/>:<Thankyou/>}
           </div>
           <div className="flex1 flex flex-col">
             <div>

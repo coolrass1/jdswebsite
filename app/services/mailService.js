@@ -14,7 +14,7 @@ export const sendMail =async function(frommail,tomail,subject, message){
         from: frommail,
         to: tomail,
         subject: subject,
-        text: message
+        html: message
       }  
       transporter.sendMail(mailData, function (err, info) {
         if(err)
