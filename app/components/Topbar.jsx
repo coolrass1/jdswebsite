@@ -65,6 +65,11 @@ const Topbar = () => {
             </Link>
           </li>
           <li>
+            <Link href="/fees" className={`${activepage=="/fees"?'text-primary':'text-secondary'} hover:text-primary pb-10`}>
+           FEES
+            </Link>
+          </li>
+          <li>
             <Link href="/contact" className={`${activepage=="/contact"?'text-primary':'text-secondary'} hover:text-primary pb-10`}>
               CONTACT US
             </Link>
